@@ -22,9 +22,8 @@ function uniquePaths(m: number, n: number): number {
         if (cm > m || cn > n) return 0;
         const key = `${cm}_${cn}`;
         if (map[key] !== undefined) return map[key];
-        let rightCount = rec(cm, cn + 1);
-        let downCount = rec(cm + 1, cn);
-        map[key] = rightCount + downCount;
+        let count = rec(cm, cn + 1) + rec(cm + 1, cn);
+        map[key] = count;
         return map[key];
     }
     
